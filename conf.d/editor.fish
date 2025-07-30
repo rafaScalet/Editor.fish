@@ -8,9 +8,9 @@ set -q lazydocker_bind; or set -g lazydocker_bind d
 abbr --add $editor_abbr (__expand_editor_abbr $editor_additional_args)
 abbr --add $editor_abbr. (__expand_editor_abbr . $editor_additional_args)
 
-abbr --add $lazygit_abbr (__expand_lazygit_abbr $lazygit_additional_args)
+abbr --add $lazygit_abbr "lazygit $lazygit_additional_args"
 
-abbr --add $lazydocker_abbr (__expand_lazydocker_abbr $lazydocker_additional_args)
+abbr --add $lazydocker_abbr "lazydocker $lazydocker_additional_args"
 
 bind --mode insert "ctrl-shift-$editor_bind" "__expand_editor_bind . $editor_additional_args"
 bind --mode default "ctrl-shift-$editor_bind" "__expand_editor_bind . $editor_additional_args"
@@ -18,8 +18,11 @@ bind --mode default "ctrl-shift-$editor_bind" "__expand_editor_bind . $editor_ad
 bind --mode insert "ctrl-alt-$editor_bind" "__expand_editor_bind $editor_additional_args"
 bind --mode default "ctrl-alt-$editor_bind" "__expand_editor_bind $editor_additional_args"
 
-bind --mode insert "ctrl-alt-$lazygit_bind" "__expand_lazygit_bind $lazygit_additional_args"
-bind --mode default "ctrl-alt-$lazygit_bind" "__expand_lazygit_bind $lazygit_additional_args"
+bind --mode insert "ctrl-alt-$lazygit_bind" "lazygit $lazygit_additional_args"
+bind --mode default "ctrl-alt-$lazygit_bind" "lazygit $lazygit_additional_args"
 
-bind --mode insert "ctrl-alt-$lazydocker_bind" "__expand_lazydocker_bind $lazydocker_additional_args"
-bind --mode default "ctrl-alt-$lazydocker_bind" "__expand_lazydocker_bind $lazydocker_additional_args"
+bind --mode insert "ctrl-alt-$lazydocker_bind" "lazydocker $lazydocker_additional_args"
+bind --mode default "ctrl-alt-$lazydocker_bind" "lazydocker $lazydocker_additional_args"
+
+bind --mode insert ctrl-alt-r fish_reload
+bind --mode default ctrl-alt-r fish_reload
